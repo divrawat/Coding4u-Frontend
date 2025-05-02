@@ -7,7 +7,7 @@ import { getTags } from '../../actions/tag';
 import { createBlog } from '../../actions/blog';
 import styles0 from "../../styles/editor.module.css"
 import Image from 'next/image';
-const SunEditor = dynamic(() => import("suneditor-react"), { ssr: false }); 
+const SunEditor = dynamic(() => import("suneditor-react"), { ssr: false });
 import 'suneditor/dist/css/suneditor.min.css';
 import slugify from 'slugify';
 import DatePicker from 'react-datepicker';
@@ -16,7 +16,7 @@ import Head from 'next/head';
 import { BACKEND } from '@/config';
 
 function darkmode() { document.body.classList.toggle("darkmode"); }
-function sighnoutuser() { signout();   window.open(`${BACKEND}/logout`,"_self") }
+function sighnoutuser() { signout(); window.open(`${BACKEND}/logout`, "_self") }
 
 
 const CreateBlog = ({ router }) => {
@@ -59,10 +59,10 @@ const CreateBlog = ({ router }) => {
         mdesc: '',
         slug: '',
         photo: '',
-        publishtext:'Publish Post',
+        publishtext: 'Publish Post',
     });
 
-    const { error, success, formData,publishtext, title, mtitle, mdesc, slug, photo } = values;
+    const { error, success, formData, publishtext, title, mtitle, mdesc, slug, photo } = values;
     const token = getCookie('token');
 
 
@@ -220,13 +220,13 @@ const CreateBlog = ({ router }) => {
         setValues({ ...values, [name]: value, formData, error: '' });
 
     };
-    
-      
+
+
 
 
     const createBlogForm = () => {
         return (
-            <form onSubmit={publishBlog} style={{background:"var(--adminBack-color)"}}>
+            <form onSubmit={publishBlog} style={{ background: "var(--adminBack-color)" }}>
 
                 <div>
                     <input placeholder='Title Goes Here' required type="text" value={title} className={styles0.inputs} onChange={handleChange('title')} autoFocus={true} />
@@ -290,12 +290,12 @@ const CreateBlog = ({ router }) => {
                             </div>
 
                             <DatePicker id='date' autoComplete="off" onChange={handleDateChange} required
-                                selected={values.date} minDate={new Date()} showYearDropdown dateFormat="dd MMM, yyyy"/>
-                            
+                                selected={values.date} minDate={new Date()} showYearDropdown dateFormat="dd MMM, yyyy" />
+
 
 
                             <div className={styles0.fieldtext}> Title</div>
-                            <input placeholder='Meta Title'  type="text" required value={mtitle} className={styles0.inputs2} onChange={handleChange('mtitle')} />
+                            <input placeholder='Meta Title' type="text" required value={mtitle} className={styles0.inputs2} onChange={handleChange('mtitle')} />
 
                             <div className={styles0.fieldtext}> Meta Description</div>
                             <textarea style={{ fontSize: "13.5px", padding: "5px", marginTop: "10px", marginBottom: "15px" }} required placeholder='Meta Description' value={mdesc} onChange={handleChange('mdesc')} rows="12" cols="26"></textarea>

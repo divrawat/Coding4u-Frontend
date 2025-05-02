@@ -9,7 +9,7 @@ export const BACKEND = "https://backend-coding4u.vercel.app";
 
 
 
-export const APP_NAME = "Coding4u";
+export const APP_NAME = "EXPO WORLD";
 export const DISQUS_SHORTNAME = "my-cms-7";
-export const APP_DESCRIPTION = "Coding4U is a blog website where users can publish their articles related to programming and computer science field. It is designed to help individuals learn programming concepts, languages."
+export const APP_DESCRIPTION = "Expoworld is your ultimate travel companion, bringing you the best travel insights, destination guides, and expert tips to make your adventures unforgettable. Whether you're a solo traveler, a family vacationer, or an adventure seeker, Expoworld offers in-depth articles on breathtaking locations, cultural experiences, must-visit attractions, and hidden gems worldwide."
 export const MY_API = "https://backend-coding4u.vercel.app";
