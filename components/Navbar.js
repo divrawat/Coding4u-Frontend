@@ -3,23 +3,13 @@ import { APP_NAME, BACKEND } from "../config";
 import { isAuth } from '../actions/auth';
 import styles from "../styles/NavbarFooter.module.css";
 import { useState, useEffect } from 'react';
-import fetch from 'isomorphic-fetch';
-import { googleauthenticate } from '../actions/auth';
 
 const Navbar = () => {
 
   const [user, setUser] = useState(null);
 
   const getUser = async () => {
-    try {
-      const response = await fetch(`${BACKEND}/login/success`, { method: "GET", credentials: "include" });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        googleauthenticate(data);
-        setUser(isAuth());
-      }
-    } catch (error) { console.log("User is not logged In"); }
+    setUser(isAuth());
   };
 
   useEffect(() => { getUser(); }, []);
