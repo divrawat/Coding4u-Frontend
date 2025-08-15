@@ -7,8 +7,8 @@ import { BACKEND } from "@/config";
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
-     email: '',
-     password: '',
+    email: '',
+    password: '',
     error: '',
     loading: false,
     message: '',
@@ -45,7 +45,7 @@ const SigninComponent = () => {
 
 
 
-  
+
 
   const handleChange = name => e => {
     setValues({ ...values, error: false, [name]: e.target.value });
@@ -92,7 +92,6 @@ const SigninComponent = () => {
   }
 
 
-  const handleGoogleLogin = ()=>{ window.open(`${BACKEND}/auth/google/callback`,"_self") }
 
   return (
     <div className={styles.backImg}>
@@ -102,10 +101,6 @@ const SigninComponent = () => {
       {showLoading()}
       {showMessage()}
       {showForm && signinForm()}
-
-      <div style={{textAlign:"center"}}>
-      <button style={{background:"white", color:"black", marginTop:"8px", border:"none", cursor:"pointer", padding:"7px"}} onClick={handleGoogleLogin}>Login with Google</button>
-      </div>
 
 
       <br /><br />

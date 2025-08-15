@@ -65,10 +65,11 @@ export const signin = async user => {
     }
 };
 
-export const signout = async next => {
+
+
+export const signout = async () => {
     removeCookie('token');
     removeLocalStorage('user');
-    // next();
 
     try {
         const response = await fetch(`${API}/signout`, {
@@ -76,7 +77,7 @@ export const signout = async next => {
         });
         console.log('signout success');
     } catch (err) {
-        return console.log(err);
+        console.log(err);
     }
 };
 

@@ -16,9 +16,9 @@ const AdminDashLayout = ({ children }) => {
   }
 
   function sighnoutuser() {
-    signout();
-    window.open(`${BACKEND}/logout`, "_self")
+    signout().then(() => { window.location.href = '/'; });
   }
+
 
   function toggledashbar() {
     let x = document.getElementById("mydashbar")
@@ -30,28 +30,28 @@ const AdminDashLayout = ({ children }) => {
 
   const [user, setUser] = useState(null);
 
-/*
+  /*
+    
   
-
-  const getUser = async () => {
-    try {
-      const response = await fetch(`${BACKEND}/login/success`, { method: "GET", credentials: "include" });
-      if (response.ok) {
-        const data = await response.json();
-        googleauthenticate(data);
-        setUser(isAuth())        
-      }
-    } catch (error) { console.log("User is not logged In"); }
-  };
-*/
+    const getUser = async () => {
+      try {
+        const response = await fetch(`${BACKEND}/login/success`, { method: "GET", credentials: "include" });
+        if (response.ok) {
+          const data = await response.json();
+          googleauthenticate(data);
+          setUser(isAuth())        
+        }
+      } catch (error) { console.log("User is not logged In"); }
+    };
+  */
 
   useEffect(() => {
     // getUser();
     setUser(isAuth())
-      // setTimeout(() => {
-        if (!isAuth()) { Router.push(`/signin`); }
-        else if (isAuth().role !== 1) { Router.push(`/user`); }
-      // }, 400);
+    // setTimeout(() => {
+    if (!isAuth()) { Router.push(`/signin`); }
+    else if (isAuth().role !== 1) { Router.push(`/user`); }
+    // }, 400);
   }, []);
 
 

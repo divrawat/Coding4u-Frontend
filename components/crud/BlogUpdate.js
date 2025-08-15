@@ -17,7 +17,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { BACKEND } from '@/config';
 
 function darkmode() { document.body.classList.toggle("darkmode"); }
-function sighnoutuser() { signout();   window.open(`${BACKEND}/logout`,"_self")  }
+function sighnoutuser() { signout(); window.open(`${BACKEND}/logout`, "_self") }
 
 const BlogUpdate = ({ router }) => {
 
@@ -36,11 +36,11 @@ const BlogUpdate = ({ router }) => {
         mdesc: '',
         slug: '',
         date: '',
-        photo:'',
-        updatetext:'Update Post',
+        photo: '',
+        updatetext: 'Update Post',
     });
 
-    const { success, formData, title,updatetext, mtitle, mdesc, slug, date, photo } = values;
+    const { success, formData, title, updatetext, mtitle, mdesc, slug, date, photo } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -57,36 +57,36 @@ const BlogUpdate = ({ router }) => {
 
     const editBlog = e => {
         e.preventDefault();
-         formData.set('body', body);
+        formData.set('body', body);
         setValues({ ...values, updatetext: 'Updating....' });
-        updateBlog(formData, token, router.query.slug).then(data => {
+        updateBlog(formData, token, router?.query.slug).then(data => {
             if (data.error) {
                 setValues({ ...values });
 
-                setMessage(data.error)
+                setMessage(data?.error)
 
                 function removemsg() {
                     setMessage("")
                 }
-                  setTimeout(removemsg, 2500)
-            } 
-            
-            
+                setTimeout(removemsg, 2500)
+            }
+
+
             else {
-                setValues({ ...values,  success: `Blog titled "${data.title}" is successfully updated` });
+                setValues({ ...values, success: `Blog titled "${data.title}" is successfully updated` });
 
                 let postslug = slugify(slug).toLowerCase();
                 function redirect() {
                     Router.push(`/${postslug}`);
                 }
-                  setTimeout(redirect, 500)
-                 
+                setTimeout(redirect, 500)
+
             }
         });
     };
 
     const showError = () => (<div className={styles0.error}>{message}</div>);
-    const showSuccess = () => ( <div className={styles0.success}>{success}</div>);
+    const showSuccess = () => (<div className={styles0.success}>{success}</div>);
 
 
 
@@ -96,7 +96,7 @@ const BlogUpdate = ({ router }) => {
                 if (!data) {
                     if (!isAuth()) {
                         Router.push(`/signin`);
-                    } 
+                    }
                     // else if (isAuth().role == 1) {
                     //     Router.push(`/admin`);
                     // }
@@ -106,7 +106,7 @@ const BlogUpdate = ({ router }) => {
 
                 } else {
                     const dateFromString = new Date(Date.parse(data.date));
-                    setValues({ ...values, title: data.title, mtitle: data.mtitle, date:dateFromString, photo:data.photo, slug: data.slug, mdesc: data.mdesc });
+                    setValues({ ...values, title: data.title, mtitle: data.mtitle, date: dateFromString, photo: data.photo, slug: data.slug, mdesc: data.mdesc });
                     setBody(data.body)
                     setCategoriesArray(data.categories);
                     setTagsArray(data.tags);
@@ -178,7 +178,7 @@ const BlogUpdate = ({ router }) => {
         } else {
             all.splice(clickedCategory, 1);
         }
-    
+
         setChecked(all);
         formData.set('categories', all);
     };
@@ -243,9 +243,9 @@ const BlogUpdate = ({ router }) => {
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-     const handleBody = (e) => {
-         setBody(e);
-         formData.set('body', e);
+    const handleBody = (e) => {
+        setBody(e);
+        formData.set('body', e);
     };
 
     const Admintopbar = () => {
@@ -276,7 +276,7 @@ const BlogUpdate = ({ router }) => {
 
                         <SunEditor
                             setContents={body}
-                             onChange={handleBody}
+                            onChange={handleBody}
                             height="auto" setDefaultStyle="font-family:trebuchet ms; color:black;font-size:17px;padding:15px"
                             setOptions={{
                                 buttonList: [
